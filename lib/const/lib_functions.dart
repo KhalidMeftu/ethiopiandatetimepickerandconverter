@@ -15,3 +15,18 @@ ethiopianToGregorianDateConvertor(
       ? gregorianConvertedDate[2].toString().replaceAll(RegExp(r'^0+(?=.)'), '')
       : result;
 }
+/// function to remove Hyphens
+removeHyphenGetDate(String dateTime) {
+  final date = dateTime.split('-');
+  return date[0];
+}
+
+removeHyphenGetMonth(String dateTime) {
+  final month= dateTime.split('-');
+  return month[1];
+}
+
+removeHyphenGetYear(String dateTime) {
+  final year = dateTime.split('-');
+  return year[2];
+}
