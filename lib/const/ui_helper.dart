@@ -14,18 +14,18 @@ double textFont040(BuildContext context)=> screenWidth(context)*0.40;
 double textFont045(BuildContext context)=> screenWidth(context)*0.45;
 
 /// paddings
-double padding8(BuildContext context)=> screenHeight(context)*0.8;
-double padding15(BuildContext context)=> screenWidth(context)*0.15;
-double padding80(BuildContext context)=> screenHeight(context)*0.80;
+double padding8(BuildContext context)=> screenHeight(context)*0.00949;/// fixed
+double padding15(BuildContext context)=> screenHeight(context)*0.01779375;/// fixed
+double padding80(BuildContext context)=> screenHeight(context)*0.0949;/// fixed
 
 
 
 /// container heights
-double height200(BuildContext context)=>screenWidth(context)*0.65;
-double height12(BuildContext context)=>screenWidth(context)*0.12;
+double height200(BuildContext context)=>screenWidth(context)*0.23714;/// fixes
+double height12(BuildContext context)=>screenHeight(context)*0.0123;/// fixed
 
 /// container width
-double width203(BuildContext context)=>screenWidth(context)*0.23;
+double width203(BuildContext context)=>screenWidth(context)*0.0232;/// fixed
 
 /// icon heights
 double iconSize20(BuildContext context)=>screenWidth(context)*0.65;
