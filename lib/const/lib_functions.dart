@@ -1,4 +1,6 @@
 import 'package:abushakir/abushakir.dart';
+import 'package:ethiopiandatepickerandconvertor/const/app_strings.dart';
+import 'package:flutter/material.dart';
 
 /// contains constant functions for our library
 
@@ -30,3 +32,13 @@ removeHyphenGetYear(String dateTime) {
   final year = dateTime.split('-');
   return year[2];
 }
+///
+List<String> days = [
+  LibAmharicStrings.shortMonday,
+  LibAmharicStrings.shortTuesday,
+  LibAmharicStrings.shortWednesday,
+  LibAmharicStrings.shortThursday,
+  LibAmharicStrings.shortFriday,
+  LibAmharicStrings.shortSaturday,
+  LibAmharicStrings.shortSunday,
+];

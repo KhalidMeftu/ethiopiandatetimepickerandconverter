@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-TextStyle _baseFont({
-  Color color = Colors.black,
+TextStyle myBaseFont({
+  Color color = Colors.white,
   required FontWeight fontWeight,
   required double fontSize,
 }) {
@@ -12,11 +12,12 @@ TextStyle _baseFont({
     fontSize: fontSize,
   );
 }
-class LibFonts {
-  static TextStyle extraExtraSmallRegular() {
-    return _baseFont(
+class LibFont {
+  static TextStyle textFont() {
+    return myBaseFont(
       fontWeight: FontWeight.w400,
       fontSize: 12,
     );
   }
 }
+
