@@ -21,15 +21,15 @@ double padding80(BuildContext context)=> screenHeight(context)*0.0949;/// fixed
 
 
 /// container heights
-double height200(BuildContext context)=>screenWidth(context)*0.23714;/// fixes
+double height200(BuildContext context)=>screenHeight(context)*0.23714;/// fixes
 double height12(BuildContext context)=>screenHeight(context)*0.0123;/// fixed
 
 /// container width
-double width203(BuildContext context)=>screenWidth(context)*0.0232;/// fixed
+double width203(BuildContext context)=>screenHeight(context)*0.0232;/// fixed
 
 /// icon heights
-double iconSize20(BuildContext context)=>screenWidth(context)*0.65;
-double iconSize16(BuildContext context)=>screenWidth(context)*0.35;
+double iconSize20(BuildContext context)=>screenHeight(context)*0.023714;/// fixed
+double iconSize16(BuildContext context)=>screenHeight(context)*0.0189701;///fixed
 
 
 /// vertical and horizontal paddings
