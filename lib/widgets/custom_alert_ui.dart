@@ -1,7 +1,6 @@
 import 'package:abushakir/abushakir.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../const/app_strings.dart';
 import '../const/lib_colors.dart';
 import '../const/lib_fonts.dart';
@@ -14,7 +13,6 @@ class AlertDatePicker extends StatefulWidget {
   /// amharic or english
   /// custom color or inherit app theme
   final List? pickedValues;
-
   ///--> picked values are dates which user selected either range dates or single values
   final bool displayGregorianCalender;
   final bool amharicLanguageMode;
@@ -78,6 +76,9 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
   List firstDateAndLastDate = [];
 
 
+  /// for user range
+  String? enddateForUser;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -94,6 +95,155 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
       },
       listener: (context, state) {
         // TODO: implement listener
+        if (state is SingleValuesIndexState) {
+          tappedDates.add(state.dateForComparsion);
+          comparsionTapedDates.add(state.singleDatesList);
+        }
+        if (state is RemoveValueFromListState) {
+          tappedDates.remove(state.dateForcomparsion);
+          comparsionTapedDates.remove(state.singleDatesList);
+        }
+
+        ///long press
+        if (state is AddFirstValueState) {
+          tappedDates = [];
+          comparsionTapedDates = [];
+          intialDate = state.firstDateForComparision;
+          firstDateAdded = true;
+          firstDateAndLastDate.add(state.firstDateForComparision);
+
+          /// comparsion
+          longTappedComparisionDates.add(state.firstDate);
+          firstNumberClickCounter = firstNumberClickCounter + 1;
+          firstDateForUser = '${state.day}-${state.month}-${state.year}';
+          forUser.add(firstDateForUser);
+        }
+
+        if (state is RemoveLongTapFirstValueState) {
+          tappedDates = [];
+          comparsionTapedDates = [];
+          intialDate = -1;
+          firstDateAdded = false;
+          firstDateAndLastDate.remove(state.firstDateForComparision);
+          longTappedComparisionDates.remove(state.firstDate);
+          firstNumberClickCounter = 0;
+        }
+
+        if (state is AddSecondValueState) {
+          tappedDates = [];
+          comparsionTapedDates = [];
+          endDate = state.firstDateForComparision;
+          endDateAdded = true;
+          firstDateAndLastDate.add(state.firstDateForComparision);
+          longTappedComparisionDates.add(state.secondDate);
+          secondNumberClickCounter = secondNumberClickCounter + 1;
+          enddateForUser = '${state.day}-${state.month}-${state.year}';
+          forUser.add(enddateForUser);
+
+
+
+          if (forUser.length == 2) {
+            var initdate = removeHyphenGetDate(forUser[0]);
+            var initmonth = removeHyphenGetMonth(forUser[0]);
+            var inityear = removeHyphenGetYear(forUser[0]);
+
+            var enddate = removeHyphenGetDate(forUser[1]);
+            var endmonth = removeHyphenGetMonth(forUser[1]);
+            var endyear = removeHyphenGetYear(forUser[1]);
+
+            /// comparison logic
+            /// compare year
+            /// compare month
+            /// compare day
+            /// --->>>> some year<<<<<<<--
+            if (int.parse(endyear) == int.parse(inityear)) {
+              /// --->>>> some month<<<<<<<--
+              if (int.parse(initmonth) == int.parse(endmonth)) {
+                /// now compare date
+                if (int.parse(initdate) > int.parse(enddate)) {
+                  for (int i = int.parse(enddate);
+                  i <= int.parse(initdate);
+                  i++) {
+                    longTapPickedRange.add(int.parse('$i$initmonth$inityear'));
+
+                    /// add for response
+                    rangeForUser.add('$inityear-$initmonth-$i');
+                  }
+                } else {
+                  for (int i = int.parse(initdate);
+                  i <= int.parse(enddate);
+                  i++) {
+                    longTapPickedRange.add(int.parse('$i$initmonth$inityear'));
+
+                    /// add for response
+                    rangeForUser.add('$inityear-$initmonth-$i');
+                  }
+                }
+              }
+              if (int.parse(endmonth) > int.parse(initmonth)) {
+                ///<--- end down count to one
+                ///---> init will count to 30
+
+                for (int x = int.parse(enddate); x >= 1; x--) {
+                  longTapPickedRange.add(int.parse('$x$endmonth$inityear'));
+
+                  /// add for response
+                  rangeForUser.add('$inityear-$endmonth-$x');
+                }
+                for (int y = int.parse(initdate); y <= 30; y++) {
+                  longTapPickedRange.add(int.parse('$y$initmonth$inityear'));
+
+                  /// add for response
+                  rangeForUser.add('$inityear-$initmonth-$y');
+                }
+              }
+
+              if (int.parse(endmonth) < int.parse(initmonth)) {
+                for (int x = int.parse(enddate); x <= 30; x++) {
+                  longTapPickedRange.add(int.parse('$x$endmonth$inityear'));
+                  rangeForUser.add('$inityear-$endmonth-$x');
+                }
+
+                for (int y = int.parse(initdate); y >= 1; y--) {
+                  longTapPickedRange.add(int.parse('$y$initmonth$inityear'));
+                  rangeForUser.add('$inityear-$initmonth-$y');
+                }
+
+                //print('Klido Meftu Berihe3');
+                // print(rangeForUser.length);
+              }
+            }
+          }
+        }
+
+        if (state is RemoveLongTapSecondValueState) {
+          /// reset range
+          firstDateAndLastDate.remove(state.secondDateForComparision);
+          longTapPickedRange = [];
+          endDate = -1;
+          secondNumberClickCounter = 0;
+          endDateAdded = false;
+        }
+
+        /// remove inital after both added
+        if (state is RemoveLongTapSecondValueAfterState) {
+          firstDateAndLastDate.remove(state.secondDateForComparision);
+          longTapPickedRange = [];
+          intialDate = endDate;
+          endDate = -1;
+          secondNumberClickCounter = 0;
+          endDateAdded = false;
+        }
+
+        /// tap and remove second number
+
+        ///longpress ends here
+        if (state is SetDayNameState) {
+          dayName = state.dayName;
+        }
+        if (state is GetYearsListState) {
+          yearsList = state.yearsList;
+        }
       },
       builder: (context, state) {
         if (state is SetSelectedIndexState) {
