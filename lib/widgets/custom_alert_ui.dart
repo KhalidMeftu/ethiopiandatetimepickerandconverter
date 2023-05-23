@@ -38,44 +38,30 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
   List selectedValues = [];
   List yearsList = [];
   String dayName = '';
-
   /// both comparsion related lists help us to compare values and set colo and etc functions
   List comparsionTapedDates = [];
   List longTappedComparisionDates = [];
-
   /// other lists like tappedDates will be set to response or results after button click
   List tappedDates = [];
   List pickedValues = [];
-
-
   /// for user range or UI
   String? firstDateForUser;
   String? endDateForUser;
   List forUser = [];
   List rangeForUser = [];
-
-
   /// long tap ranges
   List longTapPickedRange = [];
-
-
   /// value related
   int intialDate = -1;
   int endDate = -1;
   bool firstDateAdded = false;
   bool endDateAdded = false;
-
-
   /// those below will help me to determine whether user is removing or clicking if counter is >1 since
   /// single number can be added twice the logic will make it remove and remove it from list
   int firstNumberClickCounter = 0;
   int secondNumberClickCounter = 0;
-
-
   /// below the list will include first and end number
   List firstDateAndLastDate = [];
-
-
   /// for user range
   String? enddateForUser;
 
