@@ -354,9 +354,9 @@ class _CalenderWithEventWidgetState extends State<CalenderWithEventWidget> {
                 .add(PrevMonthCalendar(currentMoment));
           },
         ),
-        Text(
-          returnDayAndMonthName(dayName, '', '${currentMoment.monthName}',
-              widget.userLanguage, '', false)!,
+        Text('${currentMoment.monthName}',
+         // returnDayAndMonthName(dayName, '', '${currentMoment.monthName}',
+          //    widget.userLanguage, '', true)!,
           style: EthiopianDatePickerFont.textFont().copyWith(
               fontSize: textFont025(context),
               fontWeight: FontWeight.bold,

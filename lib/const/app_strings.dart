@@ -17,19 +17,19 @@ class LibAmharicStrings {
   static const String selectDate = 'ቀን ይመረጡ';
   static const String selectYear='ዓመት ይምረጡ';
   static const String okay = 'እሺ';
-  static const String cancel = 'ይቅር';
+  static const String cancel ='ይቅር';
   static const String jan ='ጥር';
   static const String feb ='የካቲት';
   static const String mar ='መጋቢት';
-  static const String apr ='ሚያዚያ';
+  static const String apr ='ሚያዝያ';
   static const String may ='ግንቦት';
   static const String jun ='ሰኔ';
-  static const String jul ='ሐምሌ';
+  static const String jul ='ኃምሌ';
   static const String aug ='ነሐሴ';
   static const String sep ='መስከረም';
   static const String oct ='ጥቅምት';
-  static const String nov ='ህዳር';
-  static const String dec ='ታህሳስ';
+  static const String nov ='ኅዳር';
+  static const String dec ='ታኅሳስ';
   static const String pag ='ጷጉሜን';
 
 
@@ -68,6 +68,8 @@ class LibEnglishStrings {
   static const String oct = 'October';
   static const String nov = 'November';
   static const String dec = 'December';
+  static const String pag = 'September';
+
 
 }
 class LibOromoStrings {

@@ -92,6 +92,21 @@ String? returnDayAndMonthName(String dayname, String currentDate,
       LibAmharicStrings.dec: LibEnglishStrings.dec,
       LibAmharicStrings.pag: LibEnglishStrings.sep,
     },
+    'am': {
+      LibAmharicStrings.jan: LibAmharicStrings.jan,
+      LibAmharicStrings.feb: LibAmharicStrings.feb,
+      LibAmharicStrings.mar: LibAmharicStrings.mar,
+      LibAmharicStrings.apr: LibAmharicStrings.apr,
+      LibAmharicStrings.may: LibAmharicStrings.may,
+      LibAmharicStrings.jun: LibAmharicStrings.jun,
+      LibAmharicStrings.jul: LibAmharicStrings.jul,
+      LibAmharicStrings.aug: LibAmharicStrings.aug,
+      LibAmharicStrings.sep: LibAmharicStrings.sep,
+      LibAmharicStrings.oct: LibAmharicStrings.oct,
+      LibAmharicStrings.nov: LibAmharicStrings.nov,
+      LibAmharicStrings.dec: LibAmharicStrings.dec,
+      LibAmharicStrings.pag: LibAmharicStrings.sep,
+    },
     'ao': {
       LibAmharicStrings.jan: LibOromoStrings.jan,
       LibAmharicStrings.feb: LibOromoStrings.feb,
@@ -175,4 +190,71 @@ String? returnAbrivateWeekNames(String weekName, String userLanguage) {
 
 
   return shortendName;
+}
+
+
+/// month name
+String? returnMonthName(String dayname, String currentDate,
+    String monthname, String userLanguage, String year) {
+  String monthName = '';
+
+  Map<String, Map<String, String>> months = {
+    'en': {
+      LibAmharicStrings.jan: LibEnglishStrings.jan,
+      LibAmharicStrings.feb: LibEnglishStrings.feb,
+      LibAmharicStrings.mar: LibEnglishStrings.mar,
+      LibAmharicStrings.apr: LibEnglishStrings.apr,
+      LibAmharicStrings.may: LibEnglishStrings.may,
+      LibAmharicStrings.jun: LibEnglishStrings.jun,
+      LibAmharicStrings.jul: LibEnglishStrings.jul,
+      LibAmharicStrings.aug: LibEnglishStrings.aug,
+      LibAmharicStrings.sep: LibEnglishStrings.sep,
+      LibAmharicStrings.oct: LibEnglishStrings.oct,
+      LibAmharicStrings.nov: LibEnglishStrings.nov,
+      LibAmharicStrings.dec: LibEnglishStrings.dec,
+      LibAmharicStrings.pag: LibEnglishStrings.sep,
+    },
+    'am': {
+      LibAmharicStrings.jan: LibAmharicStrings.jan,
+      LibAmharicStrings.feb: LibAmharicStrings.feb,
+      LibAmharicStrings.mar: LibAmharicStrings.mar,
+      LibAmharicStrings.apr: LibAmharicStrings.apr,
+      LibAmharicStrings.may: LibAmharicStrings.may,
+      LibAmharicStrings.jun: LibAmharicStrings.jun,
+      LibAmharicStrings.jul: LibAmharicStrings.jul,
+      LibAmharicStrings.aug: LibAmharicStrings.aug,
+      LibAmharicStrings.sep: LibAmharicStrings.sep,
+      LibAmharicStrings.oct: LibAmharicStrings.oct,
+      LibAmharicStrings.nov: LibAmharicStrings.nov,
+      LibAmharicStrings.dec: LibAmharicStrings.dec,
+      LibAmharicStrings.pag: LibAmharicStrings.pag,
+    },
+    'ao': {
+      LibAmharicStrings.jan: LibOromoStrings.jan,
+      LibAmharicStrings.feb: LibOromoStrings.feb,
+      LibAmharicStrings.mar: LibOromoStrings.mar,
+      LibAmharicStrings.apr: LibOromoStrings.apr,
+      LibAmharicStrings.may: LibOromoStrings.may,
+      LibAmharicStrings.jun: LibOromoStrings.jun,
+      LibAmharicStrings.jul: LibOromoStrings.jul,
+      LibAmharicStrings.aug: LibOromoStrings.aug,
+      LibAmharicStrings.sep: LibOromoStrings.sep,
+      LibAmharicStrings.oct: LibOromoStrings.oct,
+      LibAmharicStrings.nov: LibOromoStrings.nov,
+      LibAmharicStrings.dec: LibOromoStrings.dec,
+      LibAmharicStrings.pag: LibOromoStrings.pag,
+    },
+    // Add more languages and translations as needed
+  };
+
+
+  if (months.containsKey(userLanguage)) {
+    final monthNames = months[userLanguage];
+    if (monthNames!.containsKey(monthname)) {
+      monthName = monthNames[monthname]!;
+    }
+  }
+
+
+  return monthName;
 }

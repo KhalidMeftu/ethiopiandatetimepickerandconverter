@@ -63,6 +63,7 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
   /// other lists like tappedDates will be set to response or results after button click
   List tappedDates = [];
 
+  /// for user tap
   List pickedValues = [];
 
   /// for user range or UI
@@ -89,6 +90,7 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
   bool endDateAdded = false;
 
   /// those below will me to determine whether user is removing or clicking if counter is >1
+  /// /// now this code is no longer needed it will be removed in second version
   int firstNumberClickCounter = 0;
 
   int secondNumberClickCounter = 0;
@@ -129,28 +131,49 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
 
         ///long press user is adding the very first value
         if (state is AddFirstValueState) {
+
+          print("Kalido Meftu");
+          print(tappedDates);
+          print(compareTappedDates);
+          print(initialDate);
+          print(firstDateAndLastDate);
           tappedDates = [];
           compareTappedDates = [];
           initialDate = state.firstDateForComparision;
           firstDateAdded = true;
           firstDateAndLastDate.add(state.firstDateForComparision);
-
           /// comparsion
           compareLongPressedDates.add(state.firstDate);
           firstNumberClickCounter = firstNumberClickCounter + 1;
           firstDateForUser = '${state.day}-${state.month}-${state.year}';
           forUserOutPut.add(firstDateForUser);
+
+
         }
 
         /// user made already long tap and want to cancel or remove the intial value
         if (state is RemoveLongTapFirstValueState) {
+
           tappedDates = [];
           compareTappedDates = [];
           initialDate = -1;
-          firstDateAdded = false;
-          firstDateAndLastDate.remove(state.firstDateForComparision);
-          compareLongPressedDates.remove(state.firstDate);
-          firstNumberClickCounter = 0;
+          firstDateAdded =false;
+          firstDateAndLastDate=[];
+          compareLongPressedDates=[];
+          firstNumberClickCounter=0;
+          endDate = -1;
+          endDateAdded = false;
+          forUserOutPut=[];
+          secondNumberClickCounter=0;
+          firstNumberClickCounter=0;
+          rangeForUserOutPut=[];
+          longTapPickedRange=[];
+
+
+          //firstDateAdded = false;
+          //firstDateAndLastDate.remove(state.firstDateForComparision);
+          //compareLongPressedDates.remove(state.firstDate);
+          //firstNumberClickCounter = 0;
         }
 
         /// user adds the second value
@@ -238,6 +261,8 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
               }
             }
           }
+
+
         }
 
         /// remove the second long tapped value
@@ -252,12 +277,26 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
 
         /// remove initial value after both first and second value added
         if (state is RemoveLongTapSecondValueAfterState) {
-          firstDateAndLastDate.remove(state.secondDateForComparision);
-          longTapPickedRange = [];
-          initialDate = endDate;
+         // firstDateAndLastDate.remove(state.secondDateForComparision);
+         // longTapPickedRange = [];
+         // initialDate = endDate;
+         // endDate = -1;
+         // secondNumberClickCounter = 0;
+         // endDateAdded = false;
+          tappedDates = [];
+          compareTappedDates = [];
+          initialDate = -1;
+          firstDateAdded =false;
+          firstDateAndLastDate=[];
+          compareLongPressedDates=[];
+          firstNumberClickCounter=0;
           endDate = -1;
-          secondNumberClickCounter = 0;
           endDateAdded = false;
+          forUserOutPut=[];
+          secondNumberClickCounter=0;
+          firstNumberClickCounter=0;
+          rangeForUserOutPut=[];
+          longTapPickedRange=[];
         }
 
         /// tap and remove second number
@@ -921,37 +960,20 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
                   width: width203(context),
                     decoration: BoxDecoration(
                       color: tappedDates.isNotEmpty
-                          ? tappedDates.contains(int.parse(currentMoment
-                          .monthDays()
-                          .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                      [2]
-                          .toString() +
-                          currentMoment
-                              .monthDays()
-                              .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                          [1]
-                              .toString() +
-                          currentMoment
-                              .monthDays()
-                              .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                          [0]
-                              .toString()))
+                          ? tappedDatesContainsToday(tappedDates, currentMoment, index)
                           ? Theme.of(context).primaryColor
-                          : LibColors.grey300
+                          : widget.todaysDateBackgroundColor
                           : firstDateAndLastDate.contains(int.parse(currentMoment
-                          .monthDays()
-                          .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                      [2]
-                          .toString() +
-                          currentMoment
-                              .monthDays()
+                          .monthDays().toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][2]
+                          .toString() +currentMoment.monthDays()
                               .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][1]
                               .toString() +
-                          currentMoment.monthDays().toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][0].toString()))
+                          currentMoment.monthDays().toList()
+                          [(index - currentMoment.monthDays().toList()[0][3]).toInt()][0].toString()))
                           ? Theme.of(context).primaryColor
                           : longTapPickedRange.contains(int.parse(currentMoment.monthDays().toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][2].toString() + currentMoment.monthDays().toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][1].toString() + currentMoment.monthDays().toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()][0].toString()))
                           ? Theme.of(context).primaryColor.withOpacity(0.5)
-                          : widget.todaysDateBackgroundColor,
+                          : widget.todaysDateBackgroundColor,  //df
                       borderRadius: BorderRadius.circular(3),
                     ),
                   child: Column(
@@ -1114,21 +1136,7 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
                 width: width203(context),
                 decoration: BoxDecoration(
                   color: tappedDates.isNotEmpty
-                      ? tappedDates.contains(int.parse(currentMoment
-                                  .monthDays()
-                                  .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                                      [2]
-                                  .toString() +
-                              currentMoment
-                                  .monthDays()
-                                  .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                                      [1]
-                                  .toString() +
-                              currentMoment
-                                  .monthDays()
-                                  .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
-                                      [0]
-                                  .toString()))
+                      ? tappedDatesContainsToday(tappedDates, currentMoment, index)
                           ? Theme.of(context).primaryColor
                           : LibColors.grey300
                       : firstDateAndLastDate.contains(int.parse(currentMoment
@@ -1174,6 +1182,24 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
         }
       }),
     );
+  }
+
+  bool tappedDatesContainsToday(List<dynamic> tappedDates, ETC currentMoment, int index) {
+    return tappedDates.contains(int.parse(currentMoment
+                        .monthDays()
+                        .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
+                    [2]
+                        .toString() +
+                        currentMoment
+                            .monthDays()
+                            .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
+                        [1]
+                            .toString() +
+                        currentMoment
+                            .monthDays()
+                            .toList()[(index - currentMoment.monthDays().toList()[0][3]).toInt()]
+                        [0]
+                            .toString()));
   }
 
   Widget abbrivatedDaysList() {
