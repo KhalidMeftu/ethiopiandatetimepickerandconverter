@@ -132,11 +132,7 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
         ///long press user is adding the very first value
         if (state is AddFirstValueState) {
 
-          print("Kalido Meftu");
-          print(tappedDates);
-          print(compareTappedDates);
-          print(initialDate);
-          print(firstDateAndLastDate);
+
           tappedDates = [];
           compareTappedDates = [];
           initialDate = state.firstDateForComparision;
