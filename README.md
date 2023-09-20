@@ -1,7 +1,8 @@
 
 # Hilal Ethiopian Date Picker Flutter Plugin for AfanOromo and Amharic
 
-![Banner](banner_image/picker_banner.jpg) designed by [Firaol Andarge UI/UX desiner ](https://www.linkedin.com/in/fraol-andarge-828643261/)
+![Banner](banner_image/picker_banner.jpg) 
+designed by [Firaol Andarge UI/UX desiner ](https://www.linkedin.com/in/fraol-andarge-828643261/)
 Hilal Ethiopian Date Picker Flutter Plugin is based on renawoned Abushakir plugin a powerful and versatile tool designed specifically for Flutter developers looking to incorporate date picking functionality into their applications with support for AfanOromo and Amharic languages. This plugin not only enables users to select single dates but also facilitates the selection of date ranges across multiple months, making it highly flexible and user-friendly.
 
 One of the standout features of this plugin is its ability to display an events calendar, which provides users with a visual representation of important dates and events. This functionality allows developers to seamlessly integrate event management systems or display significant dates relevant to their application's purpose.
@@ -37,9 +38,7 @@ So the plugin requires flutter bloc dependency to oprate since all vast logics a
   ethiopiandatetimepickerandconverter:latest version
  
 ```
-```
 imports
-```
 ```
 import 'package:ethiopiandatepickerandconvertor/controller/alert_calender_bloc/alert_calender_controller_bloc.dart';
 import 'package:ethiopiandatepickerandconvertor/controller/widget_calender_bloc/widget_calender_bloc.dart';
@@ -111,7 +110,6 @@ MultiProvider(
 Range and date picker is an alert form so since the lib will be triggered from Todays date it will be triggred using bloc and when user clicks okay the libriary will return picked values let us see them
 
 ```dart
-```
 import 'package:ethiopiandatepickerandconvertor/controller/alert_calender_bloc/alert_calender_controller_bloc.dart';
 import 'package:ethiopiandatepickerandconvertor/widgets/calender_wevent_widget.dart';
 import 'package:ethiopiandatepickerandconvertor/widgets/date_picker_alret.dart';
@@ -191,4 +189,3 @@ eventsList: events, list of your events.
 
 ## Contact Me
 khalidmeftu@gmail.com
-
