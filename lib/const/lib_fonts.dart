@@ -12,7 +12,7 @@ TextStyle myBaseFont({
     fontSize: fontSize,
   );
 }
-class LibFont {
+class EthiopianDatePickerFont {
   static TextStyle textFont() {
     return myBaseFont(
       fontWeight: FontWeight.w400,

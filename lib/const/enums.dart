@@ -9,7 +9,13 @@ enum SelectionStatus{
   secondValueAdded
 }
 /// is user dis-selecting value
-enum DisselectionStatus{
-  firstValueDisselected,
-  secondValueDisselected
+enum DiSelectionStatus{
+  firstValueDiSelected,
+  secondValueDiSelected
+}
+
+enum UserLanguages {
+  am, // Amharic
+  en, // English
+  ao, // afaan oromo
 }

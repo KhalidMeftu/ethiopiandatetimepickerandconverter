@@ -18,6 +18,22 @@ class LibAmharicStrings {
   static const String selectYear='ዓመት ይምረጡ';
   static const String okay = 'እሺ';
   static const String cancel = 'ይቅር';
+  static const String jan ='ጥር';
+  static const String feb ='የካቲት';
+  static const String mar ='መጋቢት';
+  static const String apr ='ሚያዚያ';
+  static const String may ='ግንቦት';
+  static const String jun ='ሰኔ';
+  static const String jul ='ሐምሌ';
+  static const String aug ='ነሐሴ';
+  static const String sep ='መስከረም';
+  static const String oct ='ጥቅምት';
+  static const String nov ='ህዳር';
+  static const String dec ='ታህሳስ';
+  static const String pag ='ጷጉሜን';
+
+
+
 }
 
 class LibEnglishStrings {
@@ -40,4 +56,52 @@ class LibEnglishStrings {
   static const String selectYear='Select Year';
   static const String okay = 'Ok';
   static const String cancel = 'Cancel';
+  static const String jan = 'January';
+  static const String feb = 'February';
+  static const String mar = 'March';
+  static const String apr = 'April';
+  static const String may = 'May';
+  static const String jun = 'June';
+  static const String jul = 'July';
+  static const String aug = 'August';
+  static const String sep = 'September';
+  static const String oct = 'October';
+  static const String nov = 'November';
+  static const String dec = 'December';
+
+}
+class LibOromoStrings {
+  static const String appName = '';
+  static const String shortMonday = 'Daf';
+  static const String shortTuesday = 'Kib';
+  static const String shortWednesday = 'Ro';
+  static const String shortThursday = 'Kam';
+  static const String shortFriday = 'Jim';
+  static const String shortSaturday = 'San';
+  static const String shortSunday = 'S/Gu';
+  static const String monday = 'Dafinoo';
+  static const String tuesday = 'Kibxata';
+  static const String wednesday = 'Roobii';
+  static const String thursday = 'Kamisa';
+  static const String friday = 'Jimaata';
+  static const String saturday = 'Sanbata';
+  static const String sunday = 'S/Guddaa';
+  static const String selectDate = 'Guyyaa Filadhu';
+  static const String selectYear='Waggaa Filadhuu';
+  static const String okay = 'Hayyee';
+  static const String cancel = 'Dhisii';
+  static const String jan ='Amajjii';
+  static const String feb ='Guraandhala';
+  static const String mar ='Bitooteessa';
+  static const String apr ='Elba(Ebila)';
+  static const String may ='Caamsa';
+  static const String jun ='Waxabajjii';
+  static const String jul ='Adooleessa';
+  static const String aug ='Hagayya';
+  static const String sep ='Fuulbana';
+  static const String oct ='Onkololeessa';
+  static const String nov ='Sadaasa';
+  static const String dec ='Muddee';
+  static const String pag ='Qaammee';
+
 }

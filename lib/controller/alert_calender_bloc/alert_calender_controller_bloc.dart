@@ -1,17 +1,17 @@
-import 'dart:async';
-
 import 'package:abushakir/abushakir.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+import 'package:ethiopiandatepickerandconvertor/const/app_strings.dart';
 
 part 'alert_calender_controller_event.dart';
 part 'alert_calender_controller_state.dart';
 
 class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, AlertCalenderControllerState> {
-  final ETC currentMoment;
 
-  AlertCalenderControllerBloc(this.currentMoment) : super(AlertCalenderControllerInitial(currentMoment)) {
+  AlertCalenderControllerBloc() : super(AlertCalenderControllerInitial(ETC.today())) {
+    on<AlertIntialEvent>((event, emit) {
+      emit(AlertCalenderControllerInitial(ETC.today()));
+    });
     on<RemoveSecondValueAfterBothAdded>((event, emit) {
       _removeSecondValueAfterBoth(event, emit);
     });
@@ -23,11 +23,11 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
       _addSecondValue(event, emit);
     });
 
-    on<RemoveInitalValue>((event, emit) {
-      _removeInitalValue(event, emit);
+    on<RemoveInitialValue>((event, emit) {
+      _removeInitialValue(event, emit);
     });
-    on<AddInitalValue>((event, emit) {
-      _addInitalValue(event, emit);
+    on<AddInitialValue>((event, emit) {
+      _addInitialValue(event, emit);
     });
     on<RemoveItemFromList>((event, emit) {
       _removeValueFromList(event, emit);
@@ -43,34 +43,12 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
     });
     on<GetDayName>((event, emit) {
       // TODO: implement event handler
-      _getDayName(event, emit, currentMoment);
+      _getDayName(event, emit,  ETC.today());
     });
-    on<GetFirstValueEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-
-    on<GetSecondValueEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-
-    on<RemoveFirstValueEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-
-    on<RemoveSecondValueEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-
-    on<GetSelectedValuesEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-
     on<NextMonthCalendar>((event, emit) {
       // TODO: implement event handler
-      print('Next month clicked');
       _getNextMonth(event, emit);
     });
-
     on<PrevMonthCalendar>((event, emit) {
       // TODO: implement event handler
       _getPreviousMonth(event, emit);
@@ -84,7 +62,6 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
 
       _getNextYear(event, emit);
     });
-
     on<PrevYearCalendar>((event, emit) {
       // TODO: implement event handler
       _getPreviousYear(event, emit);
@@ -97,7 +74,7 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
 
   void _getPreviousMonth(
       PrevMonthCalendar event, Emitter<AlertCalenderControllerState> emit) {
-    emit(MonthsState(event.currentMonth.prevMonth));
+      emit(MonthsState(event.currentMonth.prevMonth));
   }
 
   void _getCalenderByYear(CalenderByYear event, Emitter<AlertCalenderControllerState> emit) {
@@ -111,52 +88,104 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
 
   void _getDayName(
       GetDayName event, Emitter<AlertCalenderControllerState> emit, ETC currentMoment) {
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 1) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 1) {
+      if(event.userLanguage=="am")
+        {
+          emit(SetDayNameState(currentMoment, LibAmharicStrings.monday));
+        }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.monday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.monday));
+      }
 
-      emit(SetDayNameState(currentMoment, 'Monday'));
     }
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 2) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
-      emit(SetDayNameState(currentMoment, 'Tuesday'));
-    }
-
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 3) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
-
-      emit(SetDayNameState(currentMoment, 'Wendsday'));
-
-      // return Text('wendsday');
-    }
-
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 4) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
-
-      emit(SetDayNameState(currentMoment, 'Thursday'));
-
-      //return Text('thrusday');
-    }
-
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 5) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
-
-      emit(SetDayNameState(currentMoment, 'Friday'));
-
-      // return Text('friday');
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 2) {
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.tuesday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.tuesday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.tuesday));
+      }
     }
 
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 6) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 3) {
 
-      emit(SetDayNameState(currentMoment, 'Saturday'));
-
-      // return Text('saturday');
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.wednesday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.wednesday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.wednesday));
+      }
     }
 
-    if ((event.DayIndex % event.CrossAxisCount) + 1 == 7) {
-      //                  print("Col${(index % crossAxisCount) + 1}");
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 4) {
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.thursday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.thursday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.thursday));
+      }
+    }
 
-      emit(SetDayNameState(currentMoment, 'Sunday'));
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 5) {
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.friday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.friday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.friday));
+      }
+    }
+
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 6) {
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.saturday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.saturday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.saturday));
+      }
+
+    }
+
+    if ((event.dayIndex % event.crossAxisCount) + 1 == 7) {
+      if(event.userLanguage=="am")
+      {
+        emit(SetDayNameState(currentMoment, LibAmharicStrings.sunday));
+      }
+      if(event.userLanguage=="ao")
+      {
+        emit(SetDayNameState(currentMoment, LibOromoStrings.sunday));
+      }
+      else{
+        emit(SetDayNameState(currentMoment, LibEnglishStrings.sunday));
+      }
 
     }
   }
@@ -167,7 +196,7 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
     for (int i = event.startYear; i <= event.endYear; i++) {
       yearsList.add(i);
     }
-    emit(GetYearsListState(currentMoment, yearsList));
+    emit(GetYearsListState(ETC.today(), yearsList));
   }
 
   void _getSelectedIndex(
@@ -177,29 +206,29 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
       yearsList.add(i);
     }
     emit(SetSelectedIndexState(
-        event.selectedYear, currentMoment, event.selectedIndex, yearsList));
+        event.selectedYear, ETC.today(), event.selectedIndex, yearsList));
   }
 
   void _addSingleValuesToList(
       AddSingleValues event, Emitter<AlertCalenderControllerState> emit) {
 
     emit(SingleValuesIndexState(
-        event.currentMoment, event.singleDate, event.dateForcomparsion));
+        event.currentMoment, event.singleDate, event.dateForComparision));
   }
 
   void _removeValueFromList(
       RemoveItemFromList event, Emitter<AlertCalenderControllerState> emit) {
     emit(RemoveValueFromListState(
-        event.currentMoment, event.singleDate, event.dateForcomparsion));
+        event.currentMoment, event.singleDate, event.dateForComparsion));
   }
 
-  void _addInitalValue(AddInitalValue event, Emitter<AlertCalenderControllerState> emit) {
+  void _addInitialValue(AddInitialValue event, Emitter<AlertCalenderControllerState> emit) {
 
 
     emit(AddFirstValueState(event.day, event.month, event.year,event.currentMoment,event.firstDate, event.firstDateForComparision));
   }
 
-  void _removeInitalValue(RemoveInitalValue event, Emitter<AlertCalenderControllerState> emit) {
+  void _removeInitialValue(RemoveInitialValue event, Emitter<AlertCalenderControllerState> emit) {
     emit(RemoveLongTapFirstValueState(event.currentMoment,event.firstDate, event.firstDateForComparision));
   }
 

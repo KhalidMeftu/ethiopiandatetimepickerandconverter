@@ -3,13 +3,20 @@ part of 'alert_calender_controller_bloc.dart';
 abstract class AlertCalenderControllerEvent extends Equatable {
   const AlertCalenderControllerEvent();
 }
+class AlertIntialEvent extends AlertCalenderControllerEvent{
 
+  const AlertIntialEvent();
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+
+}
 /// select first value
-class GetFirstValueEvent extends AlertCalenderControllerEvent{
+class GetFirstValue extends AlertCalenderControllerEvent{
   /// we are on range mode
   final int firstValue;
 
-  GetFirstValueEvent(this.firstValue);
+  const GetFirstValue(this.firstValue);
 
   @override
   // TODO: implement props
@@ -21,7 +28,7 @@ class GetSecondValueEvent extends AlertCalenderControllerEvent{
   /// we are on range mode
   final int secondValue;
 
-  GetSecondValueEvent(this.secondValue);
+  const GetSecondValueEvent(this.secondValue);
 
   @override
   // TODO: implement props
@@ -33,7 +40,7 @@ class RemoveFirstValueEvent extends AlertCalenderControllerEvent{
   /// we are on range mode
   final int firstValue;
 
-  RemoveFirstValueEvent(this.firstValue);
+  const RemoveFirstValueEvent(this.firstValue);
 
   @override
   // TODO: implement props
@@ -45,7 +52,7 @@ class RemoveSecondValueEvent extends AlertCalenderControllerEvent{
   /// we are on range mode
   final int secondValue;
 
-  RemoveSecondValueEvent(this.secondValue);
+  const RemoveSecondValueEvent(this.secondValue);
 
   @override
   // TODO: implement props
@@ -56,16 +63,16 @@ class RemoveSecondValueEvent extends AlertCalenderControllerEvent{
 class GetSelectedValuesEvent extends AlertCalenderControllerEvent{
   final List selectedValues;
 
-  GetSelectedValuesEvent(this.selectedValues);
+  const GetSelectedValuesEvent(this.selectedValues);
 
   @override
   // TODO: implement props
   List<Object> get props => [selectedValues];
 }
-class TodayCalendar extends AlertCalenderControllerEvent {
+class CurrentDayCalendar extends AlertCalenderControllerEvent {
   final ETC currentMonth;
 
-  const TodayCalendar(this.currentMonth);
+  const CurrentDayCalendar(this.currentMonth);
 
   @override
   List<Object> get props => [currentMonth];
@@ -99,7 +106,7 @@ class CalenderByYear extends AlertCalenderControllerEvent{
   final int year;
   final ETC currentMonth;
 
-  CalenderByYear(this.currentMonth, this.year);
+  const CalenderByYear(this.currentMonth, this.year);
 
   @override
   // TODO: implement props
@@ -129,14 +136,15 @@ class PrevYearCalendar extends AlertCalenderControllerEvent {
   String toString() => "Previous Month's Calendar { Calendar: ${currentMonth.prevMonth} }";
 }
 class GetDayName extends AlertCalenderControllerEvent{
-  final int DayIndex;
-  final int CrossAxisCount;
+  final int dayIndex;
+  final int crossAxisCount;
+  final String userLanguage;
 
-  const GetDayName(this.DayIndex, this.CrossAxisCount);
+  const GetDayName(this.dayIndex, this.crossAxisCount, this.userLanguage);
 
   @override
   // TODO: implement props
-  List<Object?> get props => [DayIndex, CrossAxisCount];
+  List<Object?> get props => [dayIndex, crossAxisCount];
 
 }
 //GetSelectedIndex
@@ -172,27 +180,27 @@ class GetSelectedIndex extends AlertCalenderControllerEvent{
 class AddSingleValues extends AlertCalenderControllerEvent{
   final String singleDate;
   final  ETC currentMoment;
-  final int dateForcomparsion;
+  final int dateForComparision;
 
-  const AddSingleValues(this.singleDate, this.currentMoment, this.dateForcomparsion);
+  const AddSingleValues(this.singleDate, this.currentMoment, this.dateForComparision);
 
   @override
   // TODO: implement props
-  List<Object?> get props => [singleDate, currentMoment, dateForcomparsion];
+  List<Object?> get props => [singleDate, currentMoment, dateForComparision];
 }
 class RemoveItemFromList extends AlertCalenderControllerEvent{
   final String singleDate;
   final  ETC currentMoment;
-  final int dateForcomparsion;
+  final int dateForComparsion;
 
-  const RemoveItemFromList(this.singleDate, this.currentMoment, this.dateForcomparsion);
+  const RemoveItemFromList(this.singleDate, this.currentMoment, this.dateForComparsion);
 
   @override
   // TODO: implement props
-  List<Object?> get props => [singleDate, currentMoment, dateForcomparsion];
+  List<Object?> get props => [singleDate, currentMoment, dateForComparsion];
 }
 /// long press action add firstValue
-class AddInitalValue extends AlertCalenderControllerEvent{
+class AddInitialValue extends AlertCalenderControllerEvent{
   final  String firstDate;
   final int day;
   final int month;
@@ -200,19 +208,19 @@ class AddInitalValue extends AlertCalenderControllerEvent{
   final int firstDateForComparision;
   final ETC currentMoment;
 
-  const AddInitalValue(this.firstDate,this.day, this.month, this.year, this.firstDateForComparision, this.currentMoment);
+  const AddInitialValue(this.firstDate,this.day, this.month, this.year, this.firstDateForComparision, this.currentMoment);
 
   @override
   // TODO: implement props
   List<Object?> get props => [firstDate, day, month,year, firstDateForComparision,currentMoment];
 }
 /// remove initial
-class RemoveInitalValue extends AlertCalenderControllerEvent{
+class RemoveInitialValue extends AlertCalenderControllerEvent{
   final  String firstDate;
   final int firstDateForComparision;
   final ETC currentMoment;
 
-  const RemoveInitalValue(this.firstDate, this.firstDateForComparision, this.currentMoment);
+  const RemoveInitialValue(this.firstDate, this.firstDateForComparision, this.currentMoment);
 
   @override
   // TODO: implement props

@@ -111,7 +111,6 @@ class RemoveValueFromListState extends AlertCalenderControllerState{
 
 }
 /// below the states which are implemented are for long press
-/// longTapped
 class AddFirstValueState extends AlertCalenderControllerState{
   final int day;
   final int month;

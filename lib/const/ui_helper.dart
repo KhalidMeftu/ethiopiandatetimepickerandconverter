@@ -7,7 +7,8 @@ double screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
 /// text fonts  25--->0.06127
-double textFont025(BuildContext context)=> screenWidth(context)*0.06127;
+double textFont07(BuildContext context)=> screenWidth(context)*0.017000;
+double textFont025(BuildContext context)=> screenWidth(context)*0.04000;
 double textFont030(BuildContext context)=> screenWidth(context)*0.07352;
 double textFont035(BuildContext context)=> screenWidth(context)*0.08577;
 double textFont040(BuildContext context)=> screenWidth(context)*0.09803;
@@ -19,11 +20,12 @@ double padding15(BuildContext context)=> screenHeight(context)*0.01779375;/// fi
 double padding80(BuildContext context)=> screenHeight(context)*0.0949;/// fixed
 
 /// container heights
-double height200(BuildContext context)=>screenHeight(context)*0.23714;/// fixes
+double height200(BuildContext context)=>screenHeight(context)*0.17000;/// fixes
 double height12(BuildContext context)=>screenHeight(context)*0.0123;/// fixed
 
 /// container width
 double width203(BuildContext context)=>screenHeight(context)*0.0232;/// fixed
+double width250(BuildContext context)=>screenHeight(context)*0.0552;/// fixed
 
 /// icon heights
 double iconSize20(BuildContext context)=>screenHeight(context)*0.023714;/// fixed
