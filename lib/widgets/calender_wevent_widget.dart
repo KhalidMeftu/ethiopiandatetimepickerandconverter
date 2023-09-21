@@ -190,25 +190,6 @@ class _CalenderWithEventWidgetState extends State<CalenderWithEventWidget> {
                                                     color:
                                                         LibColors.whiteColor),
                                           ),
-                                    Material(
-                                      color: Theme.of(context).primaryColor,
-                                      child: IconButton(
-                                        iconSize: iconSize20(context),
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: LibColors.whiteColor,
-                                        ),
-                                        // the method which is called
-                                        // when button is pressed
-                                        onPressed: () {
-                                          BlocProvider.of<
-                                                      AlertCalenderControllerBloc>(
-                                                  context)
-                                              .add(GetYearList(widget.startYear,
-                                                  widget.endYear));
-                                        },
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
