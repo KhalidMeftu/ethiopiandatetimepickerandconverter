@@ -41,7 +41,6 @@ So the plugin requires flutter bloc dependency to oprate since all vast logics a
 imports
 ```
 import 'package:ethiopiandatepickerandconvertor/controller/alert_calender_bloc/alert_calender_controller_bloc.dart';
-import 'package:ethiopiandatepickerandconvertor/controller/widget_calender_bloc/widget_calender_bloc.dart';
      
 ```
 then wrap your material app with MultiBloc provider.
@@ -52,9 +51,7 @@ then wrap your material app with MultiBloc provider.
         BlocProvider(
           create: (context) => AlertCalenderControllerBloc(),
         ),
-        BlocProvider(
-          create: (context) => WidgetCalenderBloc(),
-        ),
+       
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -71,9 +68,7 @@ then wrap your material app with MultiBloc provider.
         BlocProvider(
           create: (context) => AlertCalenderControllerBloc(),
         ),
-        BlocProvider(
-          create: (context) => WidgetCalenderBloc(),
-        ),
+      
       ],
       child: GetMaterialApp(
         title: 'Flutter Demo',
@@ -89,9 +84,7 @@ then wrap your material app with MultiBloc provider.
     BlocProvider(
           create: (context) => AlertCalenderControllerBloc(),
         ),
-        BlocProvider(
-          create: (context) => WidgetCalenderBloc(),
-        ),
+        
     ),
     ...
    ], 
@@ -122,14 +115,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
                 builder: (_) {
                   return BlocProvider.value(
                     value:
-BlocProvider.of<AlertCalenderControllerBloc>(context),
+                    BlocProvider.of<AlertCalenderControllerBloc>(context),
                     child: AlertDatePicker(
                       displayGregorianCalender: false,/// boolean value to display ethiopian calender with gregorian calender true will display flase will remove from calender
                       userLanguage: "ao",/// user  language is String value ao means it loads AfanOromo am will show amharic calender
-                      startYear: 1990,
-/// this value is not must but start year is where your calender starts to count
-                      endYear: 2020,
-                      /// this value is not must also but end year is where your calender ends to count
+                      startYear: 1990,/// this value is must but start year is where your calender starts to count
+                      endYear: 2020, /// this value is  must also but end year is where your calender ends to count
                       todaysDateBackgroundColor: Colors.greenAccent,
                       /// todaysDateBackgroundColor is Color helps you to mark todays date on calender.
                     ),
