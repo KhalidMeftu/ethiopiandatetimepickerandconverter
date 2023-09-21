@@ -102,7 +102,7 @@ MultiProvider(
 
 Range and date picker is an alert form so since the lib will be triggered from Todays date it will be triggred using bloc and when user clicks okay the libriary will return picked values let us see them
 
-```dart
+```
 import 'package:ethiopiandatepickerandconvertor/controller/alert_calender_bloc/alert_calender_controller_bloc.dart';
 import 'package:ethiopiandatepickerandconvertor/widgets/calender_wevent_widget.dart';
 import 'package:ethiopiandatepickerandconvertor/widgets/date_picker_alret.dart';
