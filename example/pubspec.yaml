@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc:
   get:
   provider:
+  fluttertoast:
   ethiopiandatepickerandconvertor:
     path: ../
 

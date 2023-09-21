@@ -3,6 +3,7 @@ import 'package:ethiopiandatepickerandconvertor/widgets/calender_wevent_widget.d
 import 'package:ethiopiandatepickerandconvertor/widgets/date_picker_alret.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -74,7 +75,14 @@ class _HomePageState extends State<HomePage> {
                         endYear: 2020,
                         eventsList: events,
                         sendUserEventData: (data) {
-                          print("Received data: $data");
+                          //print("Received data: $data");
+                          Fluttertoast.showToast(
+                            msg: data,
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.black54,
+                            textColor: Colors.white,
+                          );
                         },
                       ),
                     ),
@@ -93,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                     return BlocProvider.value(
                       value:
                       BlocProvider.of<AlertCalenderControllerBloc>(context),
-                      child: AlertDatePicker(
+                      child: const AlertDatePicker(
                         displayGregorianCalender: false,
                         userLanguage: "am",
                         startYear: 1990,
@@ -138,4 +146,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
 }
