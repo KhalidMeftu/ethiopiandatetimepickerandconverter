@@ -752,7 +752,7 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
         ),
         Text(
           returnDayAndMonthName(dayName, '', '${currentMoment.monthName}',
-              widget.userLanguage, '', false)!,
+              widget.userLanguage, '', true)!,
           style: EthiopianDatePickerFont.textFont().copyWith(
               fontSize: textFont025(context),
               fontWeight: FontWeight.bold,

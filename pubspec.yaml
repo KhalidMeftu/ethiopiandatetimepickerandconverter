@@ -1,6 +1,6 @@
 name: ethiopiandatepickerandconvertor
 description: Hilal Ethiopian Date Picker Flutter Plugin empowers developers to create engaging and culturally relevant user experiences by providing a comprehensive date picking solution that caters specifically to the Ethiopian calendar system and languages. Whether you are building a personal organizer, a scheduling app, or any other application that requires date-related functionality, this plugin offers the necessary tools to enhance your Flutter app with ease.
-version: 0.0.3
+version: 0.0.5
 homepage: https://github.com/KhalidMeftu/ethiopiandatetimepickerandconverter
 
 environment:
