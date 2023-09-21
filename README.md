@@ -166,7 +166,7 @@ So you can pass unlimited data like
                       },
                     ),
                   ),
-                  ```
+  ```
 border color is Color type parameter and it will mark border color specific date with event.
 todaysDateColor: is some as above 
 eventsList: events, list of your events.
