@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.6
 
-* TODO: Describe initial release.
+* Performance fix: amharic pagume not displaying issue resolved.

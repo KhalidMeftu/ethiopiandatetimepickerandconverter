@@ -461,278 +461,280 @@ class _AlertDatePickerState extends State<AlertDatePicker> {
             ),
           );
         }
+
         return yearsList.isEmpty
             ? Material(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: padding80(context),
-                      bottom: padding80(context),
-                      left: padding15(context),
-                      right: padding15(context)),
-                  child: Container(
-                    color: LibColors.whiteColor,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: padding80(context),
+                bottom: padding80(context),
+                left: padding15(context),
+                right: padding15(context)),
+            child: Container(
+              color: LibColors.whiteColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    color: Theme.of(context).primaryColor,
+                    width: double.infinity,
+                    height: height200(context),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          color: Theme.of(context).primaryColor,
-                          width: double.infinity,
-                          height: height200(context),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(padding8(context)),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const SizedBox(
-                                height: 10,
+                              dayName.isEmpty
+                                  ? Text(
+                                returnDayAndMonthName(
+                                    dayName,
+                                    ' ${state.currentMoment.day}',
+                                    '${state.currentMoment.monthName}',
+                                    widget.userLanguage,
+                                    '${state.currentMoment.year}',
+                                    false)!,
+                                style: EthiopianDatePickerFont
+                                    .textFont()
+                                    .copyWith(
+                                    fontSize:
+                                    textFont025(context),
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                    LibColors.whiteColor),
+                              )
+                                  : Text(
+                                returnDayAndMonthName(
+                                    dayName,
+                                    ' ${state.currentMoment.day}',
+                                    '${state.currentMoment.monthName}',
+                                    widget.userLanguage,
+                                    '${state.currentMoment.year}',
+                                    false)!,
+                                style: EthiopianDatePickerFont
+                                    .textFont()
+                                    .copyWith(
+                                    fontSize:
+                                    textFont025(context),
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                    LibColors.whiteColor),
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(padding8(context)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    dayName.isEmpty
-                                        ? Text(
-                                            returnDayAndMonthName(
-                                                dayName,
-                                                ' ${state.currentMoment.day}',
-                                                '${state.currentMoment.monthName}',
-                                                widget.userLanguage,
-                                                '${state.currentMoment.year}',
-                                                false)!,
-                                            style: EthiopianDatePickerFont
-                                                    .textFont()
-                                                .copyWith(
-                                                    fontSize:
-                                                        textFont025(context),
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        LibColors.whiteColor),
-                                          )
-                                        : Text(
-                                            returnDayAndMonthName(
-                                                dayName,
-                                                ' ${state.currentMoment.day}',
-                                                '${state.currentMoment.monthName}',
-                                                widget.userLanguage,
-                                                '${state.currentMoment.year}',
-                                                false)!,
-                                            style: EthiopianDatePickerFont
-                                                    .textFont()
-                                                .copyWith(
-                                                    fontSize:
-                                                        textFont025(context),
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        LibColors.whiteColor),
-                                          ),
-                                    Material(
-                                      color: Theme.of(context).primaryColor,
-                                      child: IconButton(
-                                        iconSize: iconSize20(context),
-                                        icon: const Icon(
-                                          Icons.edit,
-                                          color: LibColors.whiteColor,
-                                        ),
-                                        // the method which is called
-                                        // when button is pressed
-                                        onPressed: () {
-                                          BlocProvider.of<
-                                                      AlertCalenderControllerBloc>(
-                                                  context)
-                                              .add(GetYearList(widget.startYear,
-                                                  widget.endYear));
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                              Material(
+                                color: Theme.of(context).primaryColor,
+                                child: IconButton(
+                                  iconSize: iconSize20(context),
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    color: LibColors.whiteColor,
+                                  ),
+                                  // the method which is called
+                                  // when button is pressed
+                                  onPressed: () {
+                                    BlocProvider.of<
+                                        AlertCalenderControllerBloc>(
+                                        context)
+                                        .add(GetYearList(widget.startYear,
+                                        widget.endYear));
+                                  },
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        Expanded(
-                          child: Material(
-                            child: Column(
-                              children: <Widget>[
-                                Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 5),
-                                    child:
-                                        _actions(context, state.currentMoment)),
-                                abbrivatedDaysList(),
-
-                                Flexible(
-                                  child: GestureDetector(
-                                    onPanEnd: (e) {
-                                      if (e.velocity.pixelsPerSecond.dx < 0) {
-                                        BlocProvider.of<
-                                                    AlertCalenderControllerBloc>(
-                                                context)
-                                            .add(NextMonthCalendar(
-                                                state.currentMoment));
-                                      } else if (e.velocity.pixelsPerSecond.dx >
-                                          0) {
-                                        BlocProvider.of<
-                                                    AlertCalenderControllerBloc>(
-                                                context)
-                                            .add(PrevMonthCalendar(
-                                                state.currentMoment));
-                                      }
-                                    },
-                                    child: _daysListGridList(context,
-                                        state.currentMoment, tappedDates),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        widget.userLanguage ==
-                                                UserLanguages.am.name
-                                            ? LibAmharicStrings.cancel
-                                            : widget.userLanguage ==
-                                                    UserLanguages.ao.name
-                                                ? LibOromoStrings.cancel
-                                                : LibEnglishStrings.cancel,
-                                        style:
-                                            EthiopianDatePickerFont.textFont()
-                                                .copyWith(
-                                                    fontSize:
-                                                        textFont025(context),
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                      ),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
-                                      InkWell(
-                                          onTap: () {
-                                            if (compareTappedDates.isNotEmpty) {
-                                              /// working fine
-                                              pickedValues = compareTappedDates;
-                                            }
-                                            if (compareLongPressedDates
-                                                .isNotEmpty) {
-                                              /// adding to end of it
-                                              pickedValues = rangeForUserOutPut;
-                                            }
-
-                                            Navigator.pop(
-                                                context, pickedValues);
-                                          },
-                                          child: Text(
-                                            widget.userLanguage ==
-                                                    UserLanguages.ao.name
-                                                ? LibOromoStrings.okay
-                                                : widget.userLanguage ==
-                                                        UserLanguages.am.name
-                                                    ? LibAmharicStrings.okay
-                                                    : LibEnglishStrings.okay,
-                                            style: EthiopianDatePickerFont
-                                                    .textFont()
-                                                .copyWith(
-                                                    fontSize:
-                                                        textFont025(context),
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                          ))
-                                    ],
-                                  ),
-                                ),
-
-                              ],
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
-                ),
-              )
+                  Expanded(
+                    child: Material(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding:
+                              const EdgeInsets.symmetric(vertical: 5),
+                              child:
+                              _actions(context, state.currentMoment)),
+                          abbrivatedDaysList(),
+
+                          Flexible(
+                            child: GestureDetector(
+                              onPanEnd: (e) {
+                                if (e.velocity.pixelsPerSecond.dx < 0) {
+                                  BlocProvider.of<
+                                      AlertCalenderControllerBloc>(
+                                      context)
+                                      .add(NextMonthCalendar(
+                                      state.currentMoment));
+                                } else if (e.velocity.pixelsPerSecond.dx >
+                                    0) {
+                                  BlocProvider.of<
+                                      AlertCalenderControllerBloc>(
+                                      context)
+                                      .add(PrevMonthCalendar(
+                                      state.currentMoment));
+                                }
+                              },
+                              child: _daysListGridList(context,
+                                  state.currentMoment, tappedDates),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  widget.userLanguage ==
+                                      UserLanguages.am.name
+                                      ? LibAmharicStrings.cancel
+                                      : widget.userLanguage ==
+                                      UserLanguages.ao.name
+                                      ? LibOromoStrings.cancel
+                                      : LibEnglishStrings.cancel,
+                                  style:
+                                  EthiopianDatePickerFont.textFont()
+                                      .copyWith(
+                                      fontSize:
+                                      textFont025(context),
+                                      color: Theme.of(context)
+                                          .primaryColor),
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                InkWell(
+                                    onTap: () {
+                                      if (compareTappedDates.isNotEmpty) {
+                                        /// working fine
+                                        pickedValues = compareTappedDates;
+                                      }
+                                      if (compareLongPressedDates
+                                          .isNotEmpty) {
+                                        /// adding to end of it
+                                        pickedValues = rangeForUserOutPut;
+                                      }
+
+                                      Navigator.pop(
+                                          context, pickedValues);
+                                    },
+                                    child: Text(
+                                      widget.userLanguage ==
+                                          UserLanguages.ao.name
+                                          ? LibOromoStrings.okay
+                                          : widget.userLanguage ==
+                                          UserLanguages.am.name
+                                          ? LibAmharicStrings.okay
+                                          : LibEnglishStrings.okay,
+                                      style: EthiopianDatePickerFont
+                                          .textFont()
+                                          .copyWith(
+                                          fontSize:
+                                          textFont025(context),
+                                          color: Theme.of(context)
+                                              .primaryColor),
+                                    ))
+                              ],
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        )
             : Material(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: padding80(context),
-                      bottom: padding80(context),
-                      left: padding15(context),
-                      right: padding15(context)),
-                  child: Container(
-                    color: LibColors.whiteColor,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: padding80(context),
+                bottom: padding80(context),
+                left: padding15(context),
+                right: padding15(context)),
+            child: Container(
+              color: LibColors.whiteColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    color: Theme.of(context).primaryColor,
+                    width: double.infinity,
+                    height: height200(context),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          color: Theme.of(context).primaryColor,
-                          width: double.infinity,
-                          height: height200(context),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.all(padding8(context)),
-                                  child: Text(
-                                    " ${state.currentMoment.year}",
-                                    textAlign: TextAlign.start,
-                                    style: EthiopianDatePickerFont.textFont()
-                                        .copyWith(
-                                            fontSize: textFont025(context),
-                                            color: LibColors.whiteColor),
-                                  )),
-                            ],
-                          ),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        Expanded(
-                          child: GridView.builder(
-                              scrollDirection: Axis.horizontal,
-                              gridDelegate:
-                                  const SliverGridDelegateWithMaxCrossAxisExtent(
-                                      maxCrossAxisExtent: 100,
-                                      childAspectRatio: 3 / 2,
-                                      crossAxisSpacing: 20,
-                                      mainAxisSpacing: 20),
-                              itemCount: yearsList.length,
-                              itemBuilder: (BuildContext ctx, index) {
-                                return Material(
-                                  child: InkWell(
-                                      onTap: () {
-                                        BlocProvider.of<
-                                                    AlertCalenderControllerBloc>(
-                                                context)
-                                            .add(GetSelectedIndex(
-                                                index,
-                                                widget.startYear,
-                                                widget.endYear,
-                                                yearsList[index]));
-                                      },
-                                      child: Text(
-                                        yearsList[index].toString(),
-                                        style:
-                                            EthiopianDatePickerFont.textFont()
-                                                .copyWith(
-                                                    fontSize:
-                                                        textFont025(context),
-                                                    color:
-                                                        LibColors.blackColor),
-                                      )),
-                                );
-                              }),
-                        )
+                        Padding(
+                            padding: EdgeInsets.all(padding8(context)),
+                            child: Text(
+                              " ${state.currentMoment.year}",
+                              textAlign: TextAlign.start,
+                              style: EthiopianDatePickerFont.textFont()
+                                  .copyWith(
+                                  fontSize: textFont025(context),
+                                  color: LibColors.whiteColor),
+                            )),
                       ],
                     ),
                   ),
-                ),
-              );
+                  Expanded(
+                    child: GridView.builder(
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 100,
+                            childAspectRatio: 3 / 2,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
+                        itemCount: yearsList.length,
+                        itemBuilder: (BuildContext ctx, index) {
+                          return Material(
+                            child: InkWell(
+                                onTap: () {
+                                  BlocProvider.of<
+                                      AlertCalenderControllerBloc>(
+                                      context)
+                                      .add(GetSelectedIndex(
+                                      index,
+                                      widget.startYear,
+                                      widget.endYear,
+                                      yearsList[index]));
+                                },
+                                child: Text(
+                                  yearsList[index].toString(),
+                                  style:
+                                  EthiopianDatePickerFont.textFont()
+                                      .copyWith(
+                                      fontSize:
+                                      textFont025(context),
+                                      color:
+                                      LibColors.blackColor),
+                                )),
+                          );
+                        }),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+
       },
     );
   }

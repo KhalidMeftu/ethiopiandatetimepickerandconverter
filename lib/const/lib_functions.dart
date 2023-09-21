@@ -53,7 +53,7 @@ List<String> days = [
 String? returnDayAndMonthName(String dayname, String currentDate,
     String monthname, String userLanguage, String year, bool isMonthTitle) {
   String dayName = '';
-  String monthName = '';
+  String monthn = '';
   Map<String, Map<String, String>> translations = {
     'am': {
       LibEnglishStrings.monday: LibAmharicStrings.monday,
@@ -105,7 +105,7 @@ String? returnDayAndMonthName(String dayname, String currentDate,
       LibAmharicStrings.oct: LibAmharicStrings.oct,
       LibAmharicStrings.nov: LibAmharicStrings.nov,
       LibAmharicStrings.dec: LibAmharicStrings.dec,
-      LibAmharicStrings.pag: LibAmharicStrings.sep,
+      LibAmharicStrings.pag: LibAmharicStrings.pag,
     },
     'ao': {
       LibAmharicStrings.jan: LibOromoStrings.jan,
@@ -132,14 +132,16 @@ String? returnDayAndMonthName(String dayname, String currentDate,
     }
   }
   if (months.containsKey(userLanguage)) {
-    final monthNames = months[userLanguage];
-    if (monthNames!.containsKey(monthname)) {
-      monthName = monthNames[monthname]!;
+    final mNames = months[userLanguage];
+    if (mNames!.containsKey(monthname)) {
+
+      monthn = mNames[monthname]!;
     }
   }
 
 
-  return isMonthTitle? '$monthName $year':'$monthName $dayName $currentDate $year';
+
+  return isMonthTitle? '$monthn $year':'$monthn $dayName $currentDate $year';
 }
 
 
