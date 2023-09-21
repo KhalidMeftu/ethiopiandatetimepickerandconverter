@@ -28,110 +28,113 @@ class _HomePageState extends State<HomePage> {
       //   final bool colorStatus;
       //   final int startYear;
       //   final int endYear;
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: () async {
-              List? val = await showDialog<List>(
-                context: context,
-                builder: (_) {
-                  return BlocProvider.value(
-                    value:
-                        BlocProvider.of<AlertCalenderControllerBloc>(context),
-                    child: AlertDatePicker(
-                      displayGregorianCalender: false,
-                      userLanguage: "ao",
-                      startYear: 1990,
-                      endYear: 2020,
-                      todaysDateBackgroundColor: Colors.greenAccent,
-                    ),
-                  );
-                },
-              );
-              print('Dialog one returned value ---> $val');
-            },
-            child: const Text('Show Dialog One'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      BlocProvider.value(
-                    value:
-                        BlocProvider.of<AlertCalenderControllerBloc>(context),
-                    child: CalenderWithEventWidget(
-                      borderColor: Colors.yellow,
-                      todaysDateColor: Colors.purpleAccent,
-                      displayGregorianCalender: true,
-                      userLanguage: "ao",
-                      startYear: 1990,
-                      endYear: 2020,
-                      eventsList: events,
-                      sendUserEventData: (data) {
-                        print("Received data: $data");
-                      },
-                    ),
-                  ),
-                ),
-              );
-            },
-            child: const Text('Calendar with events'),
-          ),
-
-
-          ElevatedButton(
-            onPressed: () async {
-              List? val = await showDialog<List>(
-                context: context,
-                builder: (_) {
-                  return BlocProvider.value(
-                    value:
-                    BlocProvider.of<AlertCalenderControllerBloc>(context),
-                    child: AlertDatePicker(
-                      displayGregorianCalender: false,
-                      userLanguage: "am",
-                      startYear: 1990,
-                      endYear: 2020,
-                      todaysDateBackgroundColor: Colors.greenAccent,
-                    ),
-                  );
-                },
-              );
-              print('Dialog one returned value ---> $val');
-            },
-            child: const Text('Show Dialog One am'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider.value(
-                    value:
-                    BlocProvider.of<AlertCalenderControllerBloc>(context),
-                    child: CalenderWithEventWidget(
-                      borderColor: Colors.yellow,
-                      todaysDateColor: Colors.purpleAccent,
-                      displayGregorianCalender: true,
-                      userLanguage: "am",
-                      startYear: 1990,
-                      endYear: 2020,
-                      eventsList: events,
-                      sendUserEventData: (data) {
-                        print("Received data: $data");
-                      },
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                List? val = await showDialog<List>(
+                  context: context,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value:
+                          BlocProvider.of<AlertCalenderControllerBloc>(context),
+                      child: AlertDatePicker(
+                        displayGregorianCalender: false,
+                        userLanguage: "ao",
+                        startYear: 1990,
+                        endYear: 2020,
+                        todaysDateBackgroundColor: Colors.greenAccent,
+                      ),
+                    );
+                  },
+                );
+                print('Dialog one returned value ---> $val');
+              },
+              child: const Text('Show Dialog One'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        BlocProvider.value(
+                      value:
+                          BlocProvider.of<AlertCalenderControllerBloc>(context),
+                      child: CalenderWithEventWidget(
+                        borderColor: Colors.yellow,
+                        todaysDateColor: Colors.purpleAccent,
+                        displayGregorianCalender: true,
+                        userLanguage: "ao",
+                        startYear: 1990,
+                        endYear: 2020,
+                        eventsList: events,
+                        sendUserEventData: (data) {
+                          print("Received data: $data");
+                        },
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-            child: const Text('Calendar with events am'),
-          ),
-        ],
+                );
+              },
+              child: const Text('Calendar with events'),
+            ),
+
+
+            ElevatedButton(
+              onPressed: () async {
+                List? val = await showDialog<List>(
+                  context: context,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value:
+                      BlocProvider.of<AlertCalenderControllerBloc>(context),
+                      child: AlertDatePicker(
+                        displayGregorianCalender: false,
+                        userLanguage: "am",
+                        startYear: 1990,
+                        endYear: 2020,
+                        todaysDateBackgroundColor: Colors.greenAccent,
+                      ),
+                    );
+                  },
+                );
+                print('Dialog one returned value ---> $val');
+              },
+              child: const Text('Show Dialog One am'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider.value(
+                      value:
+                      BlocProvider.of<AlertCalenderControllerBloc>(context),
+                      child: CalenderWithEventWidget(
+                        borderColor: Colors.yellow,
+                        todaysDateColor: Colors.purpleAccent,
+                        displayGregorianCalender: true,
+                        userLanguage: "am",
+                        startYear: 1990,
+                        endYear: 2020,
+                        eventsList: events,
+                        sendUserEventData: (data) {
+                          print("Received data: $data");
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              },
+              child: const Text('Calendar with events am'),
+            ),
+          ],
+        ),
       ),
     );
   }
