@@ -10,8 +10,3 @@ class LibColors{
   static Color red300 = Colors.red[300]!;
 }
 
-Color LibThemeColor(BuildContext ctx)
-{
-return  Theme.of(ctx).primaryColor;
-
-}

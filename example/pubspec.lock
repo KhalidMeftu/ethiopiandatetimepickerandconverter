@@ -4,9 +4,10 @@ packages:
   abushakir:
     dependency: transitive
     description:
-      path: "../package"
-      relative: true
-    source: path
+      name: abushakir
+      sha256: cb04a63ad7123aedfdc39fb6a6a9b82a11fdc99b5a1939d15c17e90539f650c7
+      url: "https://pub.dev"
+    source: hosted
     version: "1.0.0"
   async:
     dependency: transitive

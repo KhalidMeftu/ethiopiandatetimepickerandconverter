@@ -4,19 +4,19 @@ version: 0.0.1
 homepage: https://github.com/KhalidMeftu/ethiopiandatetimepickerandconverter
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  sdk: '>=2.19.3 <4.0.0'
   flutter: ">=1.17.0"
 
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons:
-  flutter_bloc:
-  meta:
-  equatable:
-  abushakir:
-    path: ./package/
+  cupertino_icons: ^1.0.6
+  flutter_bloc: ^8.1.3
+  meta: ^1.9.1
+  equatable: ^2.0.5
+  abushakir: ^1.0.0
+
 
 
 dev_dependencies:

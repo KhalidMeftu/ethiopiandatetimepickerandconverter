@@ -10,7 +10,6 @@ enum SelectionStatus{
 }
 /// is user dis-selecting value
 enum DiSelectionStatus{
-  firstValueDiSelected,
   secondValueDiSelected
 }
 

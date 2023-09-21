@@ -1,10 +1,7 @@
 import 'package:ethiopiandatepickerandconvertor/controller/alert_calender_bloc/alert_calender_controller_bloc.dart';
-import 'package:ethiopiandatepickerandconvertor/controller/widget_calender_bloc/widget_calender_bloc.dart';
-import 'package:abushakir/abushakir.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_page.dart';
-import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,9 +20,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AlertCalenderControllerBloc(),
         ),
-        BlocProvider(
-          create: (context) => WidgetCalenderBloc(),
-        ),
+
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

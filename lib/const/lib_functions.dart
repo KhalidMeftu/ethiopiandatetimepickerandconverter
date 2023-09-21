@@ -244,7 +244,6 @@ String? returnMonthName(String dayname, String currentDate,
       LibAmharicStrings.dec: LibOromoStrings.dec,
       LibAmharicStrings.pag: LibOromoStrings.pag,
     },
-    // Add more languages and translations as needed
   };
 
 
@@ -257,4 +256,10 @@ String? returnMonthName(String dayname, String currentDate,
 
 
   return monthName;
+}
+
+ getCalenderSpecificYear(int val) {
+  final EtDatetime date;
+   date = EtDatetime.now();
+   return ETC(year: val, month: date.month);
 }

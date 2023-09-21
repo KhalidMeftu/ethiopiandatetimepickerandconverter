@@ -1,5 +1,6 @@
 import 'package:abushakir/abushakir.dart';
-import 'package:bloc/bloc.dart';
+import 'package:ethiopiandatepickerandconvertor/const/lib_functions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ethiopiandatepickerandconvertor/const/app_strings.dart';
 
@@ -78,7 +79,8 @@ class AlertCalenderControllerBloc extends Bloc<AlertCalenderControllerEvent, Ale
   }
 
   void _getCalenderByYear(CalenderByYear event, Emitter<AlertCalenderControllerState> emit) {
-    emit(MonthsState(event.currentMonth.calenderbyyear(event.year)));
+
+    emit(MonthsState(getCalenderSpecificYear(event.year)));
   }
 
   void _getNextYear(NextYearCalendar event, Emitter<AlertCalenderControllerState> emit) {}

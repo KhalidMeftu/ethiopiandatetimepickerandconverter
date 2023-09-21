@@ -17,24 +17,24 @@ class AlertDatePicker extends StatefulWidget {
   final bool displayGregorianCalender;
 
   /// display calender in afan oromo amharic and english
-  String userLanguage = '';
+  final String userLanguage;
 
   /// pass color code
   final Color todaysDateBackgroundColor;
   /// not todays bg color will be changed if user selects today
 
   /// define you intial year
-  int startYear;
+  final int startYear;
 
   /// define your final year
-   int endYear;
+   final int endYear;
 
-  AlertDatePicker(
+  const AlertDatePicker(
       {Key? key,
       required this.displayGregorianCalender,
       required this.userLanguage,
-        this.startYear = 1950,
-        this.endYear = 2030,
+        required this.startYear,
+        required this.endYear ,
         required this.todaysDateBackgroundColor})
       : super(key: key);
 

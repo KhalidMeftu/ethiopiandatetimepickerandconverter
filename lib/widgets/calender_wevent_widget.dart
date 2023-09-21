@@ -1,6 +1,4 @@
 import 'package:abushakir/abushakir.dart';
-import 'package:ethiopiandatepickerandconvertor/const/app_strings.dart';
-import 'package:ethiopiandatepickerandconvertor/const/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../const/lib_colors.dart';
@@ -31,14 +29,14 @@ class CalenderWithEventWidget extends StatefulWidget {
    final Color todaysDateColor;
 
   /// define you intial year
-  int startYear;
+  final int startYear;
 
   /// define your final year
-  int endYear;
+  final int endYear;
 
- CalenderWithEventWidget({super.key,
-   this.startYear = 1950,
-   this.endYear = 2030,
+ const CalenderWithEventWidget({super.key,
+   required this.startYear,
+   required this.endYear,
    required this.eventsList, required this.sendUserEventData, required this.displayGregorianCalender, required this.userLanguage, required this.borderColor, required this.todaysDateColor});
 
 
@@ -106,7 +104,6 @@ class _CalenderWithEventWidgetState extends State<CalenderWithEventWidget> {
   /// for user range
   String? endDateOutPut;
 
-  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +138,7 @@ class _CalenderWithEventWidgetState extends State<CalenderWithEventWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          color: LibThemeColor(context),
+                          color: Theme.of(context).primaryColor,
                           width: double.infinity,
                           height: height200(context),
                           child: Column(
