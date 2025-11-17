@@ -1,6 +1,6 @@
 name: ethiopiandatepickerandconvertor
 description: A simplified Ethiopian Date Picker Flutter Plugin with no state management dependencies. Supports Amharic, Oromo, and English languages with Ethiopian calendar system, date ranges, events, and Gregorian conversion.
-version: 1.1.0
+version: 0.0.7
 homepage: https://github.com/KhalidMeftu/ethiopiandatetimepickerandconverter
 
 environment:
@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -6,7 +6,7 @@
 
 A **simplified** Ethiopian Date Picker Flutter Plugin with **no state management dependencies**. Built on the renowned Abushakir plugin, this tool provides comprehensive date picking functionality for Flutter applications with full support for Ethiopian calendar system.
 
-## ✨ Key Improvements in v1.1.0
+## ✨ Key Improvements in v 0.0.7
 
 - **No State Management Required** - No BLoC, Provider, or any state management setup needed
 - **Simple Integration** - Just import and use with callback functions
@@ -30,7 +30,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ethiopiandatepickerandconvertor: ^1.1.0
+  ethiopiandatepickerandconvertor: ^0.0.7
 ```
 
 ### Basic Usage
@@ -287,7 +287,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ethiopiandatepickerandconvertor: ^1.1.0
+  ethiopiandatepickerandconvertor: ^0.0.7
 ```
 
 Then run:
@@ -404,7 +404,7 @@ Both widgets support:
 - Year picker
 - Gesture navigation (swipe between months)
 
-## Migration Steps from 1.0.0 to 1.2.0
+## Migration Steps from 0.0.6 to 0.0.7
 
 1. **Remove BLoC dependencies** from your `pubspec.yaml` (if only using new widgets)
 2. **Replace imports**:

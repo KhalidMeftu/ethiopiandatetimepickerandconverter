@@ -175,22 +175,14 @@ class DateConverter {
     int months = today['month']! - birthMonth;
     int days = today['day']! - birthDay;
 
-    // Adjust for negative days using the exact number of days in the previous Ethiopian month
+    /// Adjust for negative days using the exact number of days in the previous Ethiopian month
     if (days < 0) {
       months--;
 
-      // Determine previous Ethiopian month relative to today
-      int prevMonth = today['month']! - 1;
-      int prevMonthYear = today['year']!;
-      if (prevMonth < 1) {
-        prevMonth = 13;
-        prevMonthYear -= 1;
-      }
-
-      // Compute the exact number of days in the previous Ethiopian month by:
-      // - Taking the first day of the current Ethiopian month
-      // - Converting to Gregorian and subtracting one day
-      // - Converting back to Ethiopian and reading the day number (length)
+      /// Compute the exact number of days in the previous Ethiopian month by:
+      /// - Taking the first day of the current Ethiopian month
+      /// - Converting to Gregorian and subtracting one day
+      /// - Converting back to Ethiopian and reading the day number (length)
       final firstOfThisMonthEt = EtDatetime(
         year: today['year']!,
         month: today['month']!,
@@ -204,10 +196,10 @@ class DateConverter {
       days += prevMonthDays;
     }
 
-    // Adjust for negative months
+    /// Adjust for negative months
     if (months < 0) {
       years--;
-      months += 13; // Ethiopian calendar has 13 months
+      months += 13; /// Ethiopian calendar has 13 months
     }
 
     return {
@@ -230,7 +222,7 @@ class DateConverter {
     int months = today.month - birthMonth;
     int days = today.day - birthDay;
 
-    // Adjust for negative days
+    /// Adjust for negative days
     if (days < 0) {
       months--;
       // Get days in previous month
@@ -239,7 +231,7 @@ class DateConverter {
       days += daysInPrevMonth;
     }
 
-    // Adjust for negative months
+    /// Adjust for negative months
     if (months < 0) {
       years--;
       months += 12;
@@ -298,13 +290,13 @@ class DateConverter {
 
   /// Validate date format
   static bool _isValidDateFormat(String dateStr) {
-    // Check for valid date format: d/m/yyyy or dd/mm/yyyy or d-m-yyyy or dd-mm-yyyy
+    /// Check for valid date format: d/m/yyyy or dd/mm/yyyy or d-m-yyyy or dd-mm-yyyy
     final dateRegex = RegExp(r'^\d{1,2}[/\-]\d{1,2}[/\-]\d{4}$');
     if (!dateRegex.hasMatch(dateStr)) {
       return false;
     }
 
-    // Check that separators are consistent
+    /// Check that separators are consistent
     if (dateStr.contains('/') && dateStr.contains('-')) {
       return false;
     }
@@ -325,7 +317,7 @@ class DateConverter {
     final year = int.parse(parts[2]);
 
     if (isEthiopian) {
-      // Validate Ethiopian date
+      /// Validate Ethiopian date
       if (month < 1 || month > 13) {
         throw Exception('Ethiopian month must be between 1 and 13');
       }
@@ -336,7 +328,7 @@ class DateConverter {
         throw Exception('Day must be between 1 and 30');
       }
     } else {
-      // Validate Gregorian date
+      /// Validate Gregorian date
       if (month < 1 || month > 12) {
         throw Exception('Month must be between 1 and 12');
       }

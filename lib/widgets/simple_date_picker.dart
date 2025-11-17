@@ -238,8 +238,8 @@ class _SimpleDatePickerState extends State<SimpleDatePicker> {
   Widget _buildYearPicker() {
     return Padding(
       padding: EdgeInsets.only(
-        top: padding80(context),
-        bottom: padding80(context),
+        top: padding15(context),
+        bottom: padding15(context),
         left: padding15(context),
         right: padding15(context),
       ),
@@ -306,20 +306,18 @@ class _SimpleDatePickerState extends State<SimpleDatePicker> {
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: padding15(context),
-          vertical: padding80(context),
+          vertical: padding15(context),
         ),
         child: Material(
           child: Container(
             color: LibColors.whiteColor,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 _buildHeader(),
                 _buildMonthNavigation(),
                 _buildDayHeaders(),
-                Expanded(
-                  child: _buildDaysGrid(),
-                ),
+                _buildDaysGrid(),
                 _buildActionButtons(),
               ],
             ),

@@ -11,13 +11,13 @@ class EthiopianTimeViewer extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   const EthiopianTimeViewer({
-    Key? key,
+    super.key,
     this.language = 'en',
     this.timeStyle,
     this.periodStyle,
     this.backgroundColor,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   State<EthiopianTimeViewer> createState() => _EthiopianTimeViewerState();
