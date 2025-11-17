@@ -1,3 +1,5 @@
-## 0.0.6
+## 0.0.7
 
-* Performance fix: amharic pagume not displaying issue resolved.
+* State Management usage fix: complete migration from state management based to easy implementation.
+* Additional Features added: Birth date,calculation is added.
+* UI fix: Dialog UI is improved
